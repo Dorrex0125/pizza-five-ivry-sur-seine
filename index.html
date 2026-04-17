@@ -1,0 +1,822 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pizza Five - Authentiques pizzas napolitaines à Ivry-sur-Seine. Commandez en ligne ou visitez-nous. Livraison disponible.">
+    <meta name="keywords" content="pizza, restaurant, Ivry-sur-Seine, livraison, napolitaine">
+    <meta name="author" content="Pizza Five">
+    <meta property="og:title" content="Pizza Five Ivry sur Seine - Pizzeria">
+    <meta property="og:description" content="Découvrez nos délicieuses pizzas napolitaines artisanales">
+    <meta property="og:type" content="business.business">
+    <title>Pizza Five Ivry sur Seine - Pizzeria Napolitaine</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        /* Variables de couleurs */
+        :root {
+            --primary: #D32F2F;
+            --secondary: #FFF3E0;
+            --accent: #1565C0;
+            --dark: #212121;
+            --light: #F5F5F5;
+            --text: #333333;
+            --border: #E0E0E0;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #B71C1C 100%);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .phone-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.3s;
+        }
+
+        .phone-link:hover {
+            opacity: 0.9;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #B71C1C 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Info Section */
+        .info-section {
+            background: white;
+            padding: 3rem 2rem;
+            margin: -2rem 0 3rem 0;
+            position: relative;
+            z-index: 10;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .info-card h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .info-card a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .info-card a:hover {
+            color: var(--primary);
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--secondary);
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+            border-radius: 8px;
+        }
+
+        .about-section h2 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text p {
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            min-width: 40px;
+        }
+
+        .feature h4 {
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .menu-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .menu-category h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .menu-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .menu-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .menu-item-name {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+            font-size: 1.05rem;
+        }
+
+        .menu-item-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .menu-item-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem;
+            margin-top: 3rem;
+            border-radius: 8px;
+        }
+
+        .contact-section h2 {
+            color: var(--secondary);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .contact-info a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: white;
+        }
+
+        .contact-hours {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 1.5rem;
+        }
+
+        .contact-hours h4 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .form-submit {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .form-submit:hover {
+            background: #B71C1C;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 3px solid var(--primary);
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .header-contact {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-categories {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title,
+            .about-section h2,
+            .contact-section h2 {
+                font-size: 2rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .info-section {
+                margin: -1.5rem 0 2rem 0;
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .menu-item {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">🍕</div>
+                <span>Pizza Five</span>
+            </div>
+            <div class="header-contact">
+                <a href="tel:+33980909979" class="phone-link">
+                    <span>📞</span>
+                    <span>09 80 90 99 79</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Pizza Five</h1>
+            <p>Authentiques pizzas napolitaines cuisinées à la perfection</p>
+            <a href="#contact" class="cta-button">Commander maintenant</a>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <div class="container">
+        <section class="info-section">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>📍 Localisation</h3>
+                    <p>37 Bd de Brandebourg<br>94200 Ivry-sur-Seine</p>
+                    <a href="https://maps.google.com/maps?q=37+Bd+de+Brandebourg,+94200+Ivry-sur-Seine" target="_blank">Voir sur Google Maps</a>
+                </div>
+                <div class="info-card">
+                    <h3>📞 Contact</h3>
+                    <p><a href="tel:+33980909979">09 80 90 99 79</a></p>
+                    <p>Réservations & Commandes</p>
+                </div>
+                <div class="info-card">
+                    <h3>⏰ Horaires</h3>
+                    <p>Lun-Dim: 11h30 - 23h00<br>Livraison disponible</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2>À propos de Pizza Five</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Depuis plus de 10 ans, Pizza Five ravit les papilles des habitants d'Ivry-sur-Seine avec ses délicieuses pizzas napolitaines authentiques. Nous utilisons uniquement des ingrédients frais et de qualité supérieure pour préparer chaque pizza.</p>
+                    <p>Notre équipe de pizzaiolos passionnés maîtrise l'art traditionnel de la pizzéria italienne. Chaque pizza est préparée avec soin et cuite à la perfection dans notre four à bois.</p>
+                    <p>Que vous cherchiez une pizza classique ou une création originale, Pizza Five vous séduira avec ses saveurs authentiques et son accueil chaleureux.</p>
+                </div>
+                <div class="about-features">
+                    <div class="feature">
+                        <div class="feature-icon">🔥</div>
+                        <div>
+                            <h4>Cuisson au feu de bois</h4>
+                            <p>Pizzas cuites à la température parfaite pour un résultat optimal</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🌿</div>
+                        <div>
+                            <h4>Ingrédients frais</h4>
+                            <p>Sélection quotidienne d'ingrédients de qualité premium</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🚗</div>
+                        <div>
+                            <h4>Livraison rapide</h4>
+                            <p>Commandez en ligne et recevez votre pizza chez vous</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">👨‍🍳</div>
+                        <div>
+                            <h4>Expertise italienne</h4>
+                            <p>Pizzaiolos traditionnels avec savoir-faire authentique</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section">
+        <div class="container">
+            <h2 class="section-title">Notre Menu</h2>
+            <div class="menu-categories">
+                <!-- Pizzas Classiques -->
+                <div class="menu-category">
+                    <h3>🍕 Pizzas Classiques</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Margherita</div>
+                        <div class="menu-item-description">Tomate, mozzarella, basilic frais, huile d'olive</div>
+                        <div class="menu-item-price">12,00 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Quattro Formaggi</div>
+                        <div class="menu-item-description">Mozzarella, gorgonzola, chèvre, parmesan</div>
+                        <div class="menu-item-price">14,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Carbonara</div>
+                        <div class="menu-item-description">Crème fraîche, lardons, œuf, parmesan</div>
+                        <div class="menu-item-price">13,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Bolognaise</div>
+                        <div class="menu-item-description">Sauce tomate, viande hachée, oignons, parmesan</div>
+                        <div class="menu-item-price">13,00 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Napolitaine</div>
+                        <div class="menu-item-description">Tomate, mozzarella, anchois, olives, câpres</div>
+                        <div class="menu-item-price">13,50 €</div>
+                    </div>
+                </div>
+
+                <!-- Pizzas Viande -->
+                <div class="menu-category">
+                    <h3>🍖 Pizzas Viande</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Carnivore</div>
+                        <div class="menu-item-description">Pepperoni, jambon, saucisse, bacon, lardons</div>
+                        <div class="menu-item-price">15,00 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Quattro Carni</div>
+                        <div class="menu-item-description">Jambon, saucisse, bacon, salami</div>
+                        <div class="menu-item-price">14,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">BBQ Poulet</div>
+                        <div class="menu-item-description">Poulet, sauce BBQ, oignons rouges, fromage</div>
+                        <div class="menu-item-price">14,00 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Spicy Pepperoni</div>
+                        <div class="menu-item-description">Pepperoni, jalapeños, piment, mozzarella</div>
+                        <div class="menu-item-price">13,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Prosciutto Crudo</div>
+                        <div class="menu-item-description">Roquette, jambon cru, parmesan râpé</div>
+                        <div class="menu-item-price">15,50 €</div>
+                    </div>
+                </div>
+
+                <!-- Pizzas Végétaires -->
+                <div class="menu-category">
+                    <h3>🥦 Pizzas Végétaires</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Végétarienne</div>
+                        <div class="menu-item-description">Tomates, poivrons, champignons, oignons, olives</div>
+                        <div class="menu-item-price">12,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Méditerranéenne</div>
+                        <div class="menu-item-description">Roquette, tomates séchées, mozzarella fraîche, pignons</div>
+                        <div class="menu-item-price">14,00 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Pesto Gourmet</div>
+                        <div class="menu-item-description">Pesto maison, mozzarella, tomates cerises, pignons</div>
+                        <div class="menu-item-price">13,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Quatre Légumes</div>
+                        <div class="menu-item-description">Aubergine, courgette, poivron, tomate</div>
+                        <div class="menu-item-price">12,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Végane Spéciale</div>
+                        <div class="menu-item-description">Fromage vegan, tomates, champignons, roquette</div>
+                        <div class="menu-item-price">13,50 €</div>
+                    </div>
+                </div>
+
+                <!-- Suppléments & Boissons -->
+                <div class="menu-category">
+                    <h3>➕ Suppléments & Boissons</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Suppléments par ingrédient</div>
+                        <div class="menu-item-description">Mozzarella, tomate, viande, légume</div>
+                        <div class="menu-item-price">1,50 € - 2,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Boissons gazeuses</div>
+                        <div class="menu-item-description">Coca, Sprite, Fanta (33cl / 50cl)</div>
+                        <div class="menu-item-price">2,00 € / 2,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Jus & Eau</div>
+                        <div class="menu-item-description">Jus frais, eau minérale, eau gazeuse</div>
+                        <div class="menu-item-price">2,00 € - 2,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Bières artisanales</div>
+                        <div class="menu-item-description">Sélection de bières locales</div>
+                        <div class="menu-item-price">3,50 € - 5,00 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Vins de maison</div>
+                        <div class="menu-item-description">Vins rouges, blancs et rosés</div>
+                        <div class="menu-item-price">4,50 € - 6,00 €</div>
+                    </div>
+                </div>
+
+                <!-- Desserts -->
+                <div class="menu-category">
+                    <h3>🍰 Desserts</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Tiramisu</div>
+                        <div class="menu-item-description">Classique italien fait maison</div>
+                        <div class="menu-item-price">5,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Panna Cotta</div>
+                        <div class="menu-item-description">Crème italienne légère et savoureuse</div>
+                        <div class="menu-item-price">5,00 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Pannacotta Fruits Rouges</div>
+                        <div class="menu-item-description">Coulis de fruits rouges frais</div>
+                        <div class="menu-item-price">5,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Gelato Maison</div>
+                        <div class="menu-item-description">Plusieurs parfums au choix</div>
+                        <div class="menu-item-price">4,00 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Pizza Sucrée Nutella</div>
+                        <div class="menu-
