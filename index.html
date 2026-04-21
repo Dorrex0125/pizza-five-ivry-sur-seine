@@ -49,6 +49,9 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            border-bottom: 3px solid var(--secondary);
         }
 
         .header-container {
@@ -57,6 +60,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 2rem;
         }
 
         .logo {
@@ -66,6 +70,11 @@
             font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: 1px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.08);
         }
 
         .logo-icon {
@@ -79,6 +88,7 @@
             font-size: 1.5rem;
             color: var(--primary);
             font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         .header-contact {
@@ -94,58 +104,122 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            transition: opacity 0.3s;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
         }
 
         .phone-link:hover {
-            opacity: 0.9;
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #B71C1C 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #B71C1C 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="p" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse"><circle cx="60" cy="60" r="50" fill="%23FFF3E0" opacity="0.08"/></pattern></defs><rect width="1200" height="600" fill="%23D32F2F"/><rect width="1200" height="600" fill="url(%23p)"/></svg>');
+            background-size: cover;
+            background-position: center;
             color: white;
-            padding: 6rem 2rem;
+            padding: 7rem 2rem;
             text-align: center;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -15%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 243, 224, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
         }
 
         .hero-content {
+            position: relative;
+            z-index: 2;
             max-width: 800px;
-            margin: 0 auto;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
             opacity: 0.95;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .cta-button {
             display: inline-block;
-            background: var(--secondary);
+            background: linear-gradient(135deg, var(--secondary) 0%, #FFE0B2 100%);
             color: var(--primary);
-            padding: 1rem 2.5rem;
+            padding: 1.2rem 3rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1.1rem;
             transition: all 0.3s ease;
-            border: 2px solid var(--secondary);
+            border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.3);
+            transition: left 0.3s ease;
         }
 
         .cta-button:hover {
             background: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.3);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         /* Main Container */
@@ -155,14 +229,25 @@
             padding: 0 2rem;
         }
 
+        /* Section Content Wrapper */
+        section {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            padding: 4rem 2rem;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
         /* Info Section */
         .info-section {
             background: white;
-            padding: 3rem 2rem;
-            margin: -2rem 0 3rem 0;
             position: relative;
             z-index: 10;
-            border-radius: 8px;
+            margin-top: -2rem;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
 
@@ -170,13 +255,18 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .info-card {
             text-align: center;
-            padding: 1.5rem;
+            padding: 2rem 1.5rem;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            background: var(--light);
         }
 
         .info-card h3 {
@@ -188,6 +278,7 @@
         .info-card p {
             color: var(--text);
             font-size: 1rem;
+            line-height: 1.6;
         }
 
         .info-card a {
@@ -195,25 +286,26 @@
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s;
+            display: inline-block;
+            margin-top: 0.5rem;
         }
 
         .info-card a:hover {
             color: var(--primary);
+            text-decoration: underline;
         }
 
         /* About Section */
         .about-section {
-            background: var(--secondary);
-            padding: 4rem 2rem;
-            margin: 3rem 0;
-            border-radius: 8px;
+            background: linear-gradient(to bottom, var(--secondary) 0%, #FFF8E1 100%);
         }
 
         .about-section h2 {
             color: var(--primary);
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
             text-align: center;
+            font-weight: 700;
         }
 
         .about-content {
@@ -221,89 +313,126 @@
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .about-text p {
             color: var(--text);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-size: 1.05rem;
-            line-height: 1.8;
+            line-height: 1.9;
         }
 
         .about-features {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .feature {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
             background: white;
-            border-radius: 6px;
+            border-radius: 8px;
             border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .feature-icon {
-            font-size: 1.8rem;
-            min-width: 40px;
+            font-size: 2rem;
+            min-width: 50px;
+            text-align: center;
         }
 
         .feature h4 {
             color: var(--primary);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .feature p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
         }
 
         /* Menu Section */
         .menu-section {
-            padding: 4rem 2rem;
+            background: white;
         }
 
         .section-title {
             color: var(--primary);
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             text-align: center;
             margin-bottom: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
         }
 
         .menu-categories {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
         .menu-category {
             background: white;
-            padding: 2rem;
-            border-radius: 8px;
+            padding: 2.5rem;
+            border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.4s ease;
+            border-top: 4px solid var(--primary);
+            position: relative;
         }
 
         .menu-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 28px rgba(211, 47, 47, 0.12);
         }
 
         .menu-category h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 1.8rem;
             text-align: center;
-            padding-bottom: 1rem;
-            border-bottom: 3px solid var(--secondary);
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary), #B71C1C);
+            border-radius: 8px;
+            font-weight: 700;
         }
 
         .menu-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.8rem;
+            padding-bottom: 1.8rem;
+            border-bottom: 1px dotted var(--border);
+            transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .menu-item:hover {
+            padding-left: 0.5rem;
         }
 
         .menu-item:last-child {
@@ -313,94 +442,103 @@
         }
 
         .menu-item-name {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text);
-            margin-bottom: 0.25rem;
-            font-size: 1.05rem;
-        }
-
-        .menu-item-description {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.5;
+            margin-bottom: 0.4rem;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
         }
 
         .menu-item-price {
             color: var(--primary);
             font-weight: 700;
             font-size: 1.1rem;
+            white-space: nowrap;
+        }
+
+        .menu-item-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+            line-height: 1.6;
+            font-style: italic;
         }
 
         /* Contact Section */
         .contact-section {
-            background: var(--dark);
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1a1a 100%);
             color: white;
-            padding: 4rem 2rem;
-            margin-top: 3rem;
-            border-radius: 8px;
         }
 
         .contact-section h2 {
             color: var(--secondary);
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             text-align: center;
             margin-bottom: 3rem;
+            font-weight: 700;
         }
 
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .contact-info h3 {
             color: var(--secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-size: 1.3rem;
+            font-weight: 600;
         }
 
         .contact-info p {
             margin-bottom: 1rem;
             line-height: 1.8;
+            font-size: 1rem;
         }
 
         .contact-info a {
-            color: var(--secondary);
+            color: #FFE0B2;
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            display: inline-block;
         }
 
         .contact-info a:hover {
             color: white;
+            transform: translateX(4px);
         }
 
         .contact-hours {
-            background: rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 6px;
-            margin-top: 1.5rem;
+            background: rgba(255,255,255,0.08);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border-left: 4px solid var(--secondary);
         }
 
         .contact-hours h4 {
             color: var(--secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
         }
 
         .hours-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .contact-form {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.2rem;
         }
 
         .form-group {
@@ -409,21 +547,22 @@
         }
 
         .form-group label {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
             color: var(--secondary);
             font-weight: 600;
+            font-size: 0.95rem;
         }
 
         .form-group input,
         .form-group textarea {
-            padding: 0.8rem;
+            padding: 0.9rem;
             border: 2px solid rgba(255,255,255,0.2);
             border-radius: 6px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08);
             color: white;
             font-family: inherit;
             font-size: 1rem;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
         }
 
         .form-group input::placeholder,
@@ -436,94 +575,178 @@
             outline: none;
             border-color: var(--secondary);
             background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 12px rgba(255, 243, 224, 0.2);
         }
 
         .form-submit {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), #B71C1C);
             color: white;
-            padding: 0.8rem 1.5rem;
+            padding: 1rem 2rem;
             border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.05rem;
             cursor: pointer;
             transition: all 0.3s;
-            margin-top: 0.5rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
         }
 
         .form-submit:hover {
-            background: #B71C1C;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(211, 47, 47, 0.4);
         }
 
         /* Footer */
         footer {
-            background: var(--dark);
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1a1a 100%);
             color: white;
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            padding: 3rem 2rem;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
             border-top: 3px solid var(--primary);
         }
 
         footer p {
-            opacity: 0.8;
+            margin: 0.8rem 0;
+            opacity: 0.85;
         }
 
         footer a {
             color: var(--secondary);
             text-decoration: none;
             font-weight: 600;
+            transition: color 0.3s;
         }
 
         footer a:hover {
             color: white;
         }
 
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .section-title {
+                font-size: 2.4rem;
+            }
+
+            .menu-categories {
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.5rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+            }
+
             .header-container {
                 flex-direction: column;
                 gap: 1rem;
+                padding: 0 1.5rem;
             }
 
             .header-contact {
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 0.8rem;
+                width: 100%;
+            }
+
+            .phone-link {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .hero {
+                padding: 5rem 1.5rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                min-height: 450px;
             }
 
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.8rem;
             }
 
             .hero p {
                 font-size: 1.1rem;
             }
 
+            .cta-button {
+                padding: 1rem 2.5rem;
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 3.5rem 1.5rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+            }
+
+            .section-content {
+                padding: 0 1.5rem;
+            }
+
             .about-content,
             .contact-content {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .menu-categories {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .section-title,
             .about-section h2,
             .contact-section h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .info-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            footer {
+                padding: 2.5rem 1.5rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 640px) {
+            header {
+                padding: 0.8rem 1rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+            }
+
+            .header-container {
+                padding: 0 1rem;
+            }
+
             .logo {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
 
             .logo-icon {
@@ -533,11 +756,15 @@
             }
 
             .hero {
-                padding: 3rem 1rem;
+                padding: 4rem 1rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                min-height: 400px;
             }
 
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
+                margin-bottom: 0.8rem;
             }
 
             .hero p {
@@ -545,34 +772,246 @@
             }
 
             .cta-button {
-                padding: 0.8rem 2rem;
-                font-size: 1rem;
+                padding: 0.95rem 2rem;
+                font-size: 0.95rem;
             }
 
-            .container {
+            section {
+                padding: 3rem 1rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+            }
+
+            .section-content {
                 padding: 0 1rem;
             }
 
-            .info-section {
-                margin: -1.5rem 0 2rem 0;
-                padding: 1.5rem 1rem;
+            .section-title {
+                font-size: 1.9rem;
+                margin-bottom: 2rem;
+            }
+
+            .menu-categories {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-category {
+                padding: 1.8rem;
+            }
+
+            .menu-category h3 {
+                font-size: 1.3rem;
+            }
+
+            .menu-item-name {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-item-price {
+                margin-top: 0.3rem;
+            }
+
+            .about-section h2,
+            .contact-section h2 {
+                font-size: 2rem;
+            }
+
+            .feature {
+                padding: 1.2rem;
+            }
+
+            .feature-icon {
+                font-size: 1.8rem;
+            }
+
+            footer {
+                padding: 2rem 1rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                font-size: 0.9rem;
             }
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        @media (max-width: 480px) {
+            header {
+                padding: 0.6rem 0.8rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            .header-container {
+                padding: 0 0.8rem;
+            }
+
+            .logo {
+                font-size: 1.15rem;
+            }
+
+            .header-contact {
+                gap: 0.5rem;
+                font-size: 0.85rem;
+            }
+
+            .phone-link {
+                padding: 0.3rem 0.6rem;
+            }
+
+            .hero {
+                padding: 3rem 0.8rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                min-height: 320px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero::before {
+                display: none;
+            }
+
+            .cta-button {
+                padding: 0.85rem 1.8rem;
+                font-size: 0.9rem;
+            }
+
+            section {
+                padding: 2.5rem 0.8rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+            }
+
+            .section-content {
+                padding: 0 0.8rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .section-title::after {
+                width: 60px;
+            }
+
+            .menu-categories {
+                gap: 1rem;
+            }
+
+            .menu-category {
+                padding: 1.5rem;
+            }
+
+            .menu-category h3 {
+                font-size: 1.2rem;
+                padding: 0.8rem;
+            }
+
+            .menu-item {
+                margin-bottom: 1.2rem;
+                padding-bottom: 1rem;
+            }
+
+            .menu-item-name {
+                font-size: 0.95rem;
+            }
+
+            .menu-item-description {
+                font-size: 0.85rem;
+            }
+
+            .menu-item-price {
+                font-size: 1rem;
+            }
+
+            .about-section h2,
+            .contact-section h2 {
+                font-size: 1.7rem;
+            }
+
+            .contact-content {
+                gap: 1.5rem;
+            }
+
+            .contact-hours {
+                padding: 1.2rem;
+            }
+
+            .contact-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 0.7rem;
+                font-size: 0.95rem;
+            }
+
+            .form-submit {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            footer {
+                padding: 1.5rem 0.8rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                font-size: 0.85rem;
+            }
+
+            footer p {
+                margin: 0.5rem 0;
             }
         }
 
-        .menu-item {
-            animation: fadeIn 0.5s ease-out;
+        @media (max-width: 360px) {
+            header {
+                padding: 0.5rem 0.6rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+            }
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .hero {
+                padding: 2.5rem 0.6rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.85rem;
+            }
+
+            section {
+                padding: 2rem 0.6rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            footer {
+                padding: 1.2rem 0.6rem;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+            }
         }
     </style>
 </head>
@@ -603,8 +1042,8 @@
     </section>
 
     <!-- Info Section -->
-    <div class="container">
-        <section class="info-section">
+    <section class="info-section">
+        <div class="section-content">
             <div class="info-grid">
                 <div class="info-card">
                     <h3>📍 Localisation</h3>
@@ -621,12 +1060,12 @@
                     <p>Lun-Dim: 11h30 - 23h00<br>Livraison disponible</p>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
     <!-- About Section -->
     <section class="about-section">
-        <div class="container">
+        <div class="section-content">
             <h2>À propos de Pizza Five</h2>
             <div class="about-content">
                 <div class="about-text">
@@ -670,36 +1109,46 @@
 
     <!-- Menu Section -->
     <section class="menu-section">
-        <div class="container">
+        <div class="section-content">
             <h2 class="section-title">Notre Menu</h2>
             <div class="menu-categories">
                 <!-- Pizzas Classiques -->
                 <div class="menu-category">
                     <h3>🍕 Pizzas Classiques</h3>
                     <div class="menu-item">
-                        <div class="menu-item-name">Margherita</div>
+                        <div class="menu-item-name">
+                            <span>Margherita</span>
+                            <span class="menu-item-price">12,00 €</span>
+                        </div>
                         <div class="menu-item-description">Tomate, mozzarella, basilic frais, huile d'olive</div>
-                        <div class="menu-item-price">12,00 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Quattro Formaggi</div>
+                        <div class="menu-item-name">
+                            <span>Quattro Formaggi</span>
+                            <span class="menu-item-price">14,50 €</span>
+                        </div>
                         <div class="menu-item-description">Mozzarella, gorgonzola, chèvre, parmesan</div>
-                        <div class="menu-item-price">14,50 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Carbonara</div>
+                        <div class="menu-item-name">
+                            <span>Carbonara</span>
+                            <span class="menu-item-price">13,50 €</span>
+                        </div>
                         <div class="menu-item-description">Crème fraîche, lardons, œuf, parmesan</div>
-                        <div class="menu-item-price">13,50 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Bolognaise</div>
+                        <div class="menu-item-name">
+                            <span>Bolognaise</span>
+                            <span class="menu-item-price">13,00 €</span>
+                        </div>
                         <div class="menu-item-description">Sauce tomate, viande hachée, oignons, parmesan</div>
-                        <div class="menu-item-price">13,00 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Napolitaine</div>
+                        <div class="menu-item-name">
+                            <span>Napolitaine</span>
+                            <span class="menu-item-price">13,50 €</span>
+                        </div>
                         <div class="menu-item-description">Tomate, mozzarella, anchois, olives, câpres</div>
-                        <div class="menu-item-price">13,50 €</div>
                     </div>
                 </div>
 
@@ -707,29 +1156,39 @@
                 <div class="menu-category">
                     <h3>🍖 Pizzas Viande</h3>
                     <div class="menu-item">
-                        <div class="menu-item-name">Carnivore</div>
+                        <div class="menu-item-name">
+                            <span>Carnivore</span>
+                            <span class="menu-item-price">15,00 €</span>
+                        </div>
                         <div class="menu-item-description">Pepperoni, jambon, saucisse, bacon, lardons</div>
-                        <div class="menu-item-price">15,00 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Quattro Carni</div>
+                        <div class="menu-item-name">
+                            <span>Quattro Carni</span>
+                            <span class="menu-item-price">14,50 €</span>
+                        </div>
                         <div class="menu-item-description">Jambon, saucisse, bacon, salami</div>
-                        <div class="menu-item-price">14,50 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">BBQ Poulet</div>
+                        <div class="menu-item-name">
+                            <span>BBQ Poulet</span>
+                            <span class="menu-item-price">14,00 €</span>
+                        </div>
                         <div class="menu-item-description">Poulet, sauce BBQ, oignons rouges, fromage</div>
-                        <div class="menu-item-price">14,00 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Spicy Pepperoni</div>
+                        <div class="menu-item-name">
+                            <span>Spicy Pepperoni</span>
+                            <span class="menu-item-price">13,50 €</span>
+                        </div>
                         <div class="menu-item-description">Pepperoni, jalapeños, piment, mozzarella</div>
-                        <div class="menu-item-price">13,50 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Prosciutto Crudo</div>
+                        <div class="menu-item-name">
+                            <span>Prosciutto Crudo</span>
+                            <span class="menu-item-price">15,50 €</span>
+                        </div>
                         <div class="menu-item-description">Roquette, jambon cru, parmesan râpé</div>
-                        <div class="menu-item-price">15,50 €</div>
                     </div>
                 </div>
 
@@ -737,29 +1196,39 @@
                 <div class="menu-category">
                     <h3>🥦 Pizzas Végétaires</h3>
                     <div class="menu-item">
-                        <div class="menu-item-name">Végétarienne</div>
+                        <div class="menu-item-name">
+                            <span>Végétarienne</span>
+                            <span class="menu-item-price">12,50 €</span>
+                        </div>
                         <div class="menu-item-description">Tomates, poivrons, champignons, oignons, olives</div>
-                        <div class="menu-item-price">12,50 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Méditerranéenne</div>
+                        <div class="menu-item-name">
+                            <span>Méditerranéenne</span>
+                            <span class="menu-item-price">14,00 €</span>
+                        </div>
                         <div class="menu-item-description">Roquette, tomates séchées, mozzarella fraîche, pignons</div>
-                        <div class="menu-item-price">14,00 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Pesto Gourmet</div>
+                        <div class="menu-item-name">
+                            <span>Pesto Gourmet</span>
+                            <span class="menu-item-price">13,50 €</span>
+                        </div>
                         <div class="menu-item-description">Pesto maison, mozzarella, tomates cerises, pignons</div>
-                        <div class="menu-item-price">13,50 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Quatre Légumes</div>
+                        <div class="menu-item-name">
+                            <span>Quatre Légumes</span>
+                            <span class="menu-item-price">12,50 €</span>
+                        </div>
                         <div class="menu-item-description">Aubergine, courgette, poivron, tomate</div>
-                        <div class="menu-item-price">12,50 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Végane Spéciale</div>
+                        <div class="menu-item-name">
+                            <span>Végane Spéciale</span>
+                            <span class="menu-item-price">13,50 €</span>
+                        </div>
                         <div class="menu-item-description">Fromage vegan, tomates, champignons, roquette</div>
-                        <div class="menu-item-price">13,50 €</div>
                     </div>
                 </div>
 
@@ -767,29 +1236,39 @@
                 <div class="menu-category">
                     <h3>➕ Suppléments & Boissons</h3>
                     <div class="menu-item">
-                        <div class="menu-item-name">Suppléments par ingrédient</div>
+                        <div class="menu-item-name">
+                            <span>Suppléments</span>
+                            <span class="menu-item-price">1,50 € - 2,50 €</span>
+                        </div>
                         <div class="menu-item-description">Mozzarella, tomate, viande, légume</div>
-                        <div class="menu-item-price">1,50 € - 2,50 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Boissons gazeuses</div>
+                        <div class="menu-item-name">
+                            <span>Boissons gazeuses</span>
+                            <span class="menu-item-price">2,00 € / 2,50 €</span>
+                        </div>
                         <div class="menu-item-description">Coca, Sprite, Fanta (33cl / 50cl)</div>
-                        <div class="menu-item-price">2,00 € / 2,50 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Jus & Eau</div>
+                        <div class="menu-item-name">
+                            <span>Jus & Eau</span>
+                            <span class="menu-item-price">2,00 € - 2,50 €</span>
+                        </div>
                         <div class="menu-item-description">Jus frais, eau minérale, eau gazeuse</div>
-                        <div class="menu-item-price">2,00 € - 2,50 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Bières artisanales</div>
+                        <div class="menu-item-name">
+                            <span>Bières artisanales</span>
+                            <span class="menu-item-price">3,50 € - 5,00 €</span>
+                        </div>
                         <div class="menu-item-description">Sélection de bières locales</div>
-                        <div class="menu-item-price">3,50 € - 5,00 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Vins de maison</div>
+                        <div class="menu-item-name">
+                            <span>Vins de maison</span>
+                            <span class="menu-item-price">4,50 € - 6,00 €</span>
+                        </div>
                         <div class="menu-item-description">Vins rouges, blancs et rosés</div>
-                        <div class="menu-item-price">4,50 € - 6,00 €</div>
                     </div>
                 </div>
 
@@ -797,25 +1276,102 @@
                 <div class="menu-category">
                     <h3>🍰 Desserts</h3>
                     <div class="menu-item">
-                        <div class="menu-item-name">Tiramisu</div>
+                        <div class="menu-item-name">
+                            <span>Tiramisu</span>
+                            <span class="menu-item-price">5,50 €</span>
+                        </div>
                         <div class="menu-item-description">Classique italien fait maison</div>
-                        <div class="menu-item-price">5,50 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Panna Cotta</div>
+                        <div class="menu-item-name">
+                            <span>Panna Cotta</span>
+                            <span class="menu-item-price">5,00 €</span>
+                        </div>
                         <div class="menu-item-description">Crème italienne légère et savoureuse</div>
-                        <div class="menu-item-price">5,00 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Pannacotta Fruits Rouges</div>
+                        <div class="menu-item-name">
+                            <span>Pannacotta Fruits Rouges</span>
+                            <span class="menu-item-price">5,50 €</span>
+                        </div>
                         <div class="menu-item-description">Coulis de fruits rouges frais</div>
-                        <div class="menu-item-price">5,50 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Gelato Maison</div>
+                        <div class="menu-item-name">
+                            <span>Gelato Maison</span>
+                            <span class="menu-item-price">4,00 €</span>
+                        </div>
                         <div class="menu-item-description">Plusieurs parfums au choix</div>
-                        <div class="menu-item-price">4,00 €</div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-name">Pizza Sucrée Nutella</div>
-                        <div class="menu-
+                        <div class="menu-item-name">
+                            <span>Pizza Sucrée Nutella</span>
+                            <span class="menu-item-price">6,00 €</span>
+                        </div>
+                        <div class="menu-item-description">Nutella et sucre cristallisé</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="section-content">
+            <h2>Nous Contacter</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>📍 Localisation</h3>
+                    <p>37 Boulevard de Brandebourg<br>94200 Ivry-sur-Seine<br>France</p>
+                    <a href="https://maps.google.com/maps?q=37+Bd+de+Brandebourg,+94200+Ivry-sur-Seine" target="_blank">Voir sur Google Maps →</a>
+                    
+                    <div class="contact-hours">
+                        <h4>⏰ Horaires d'Ouverture</h4>
+                        <div class="hours-item">
+                            <span>Lundi - Jeudi</span>
+                            <span>11h30 - 23h00</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Vendredi - Samedi</span>
+                            <span>11h30 - 23h30</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Dimanche</span>
+                            <span>12h00 - 23h00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <h3>📞 Contact & Réservation</h3>
+                    <p><a href="tel:+33980909979">09 80 90 99 79</a></p>
+                    <p>Appelez-nous pour réserver votre table ou passer commande en ligne.</p>
+                    
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nom</label>
+                            <input type="text" id="name" name="name" placeholder="Votre nom">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Votre téléphone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Votre message" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Pizza Five - Pizzeria Napolitaine Authentique</p>
+        <p>37 Boulevard de Brandebourg, 94200 Ivry-sur-Seine | <a href="tel:+33980909979">09 80 90 99 79</a></p>
+        <p>Pizzas artisanales cuites au feu de bois depuis 2014</p>
+    </footer>
+</body>
+</html>
